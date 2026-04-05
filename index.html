@@ -219,6 +219,178 @@
       color: #b48c50;
     }
 
+    /* Photo List */
+    .photo-list {
+      max-width: 1100px;
+      margin: 60px auto 0;
+      padding: 0 32px;
+    }
+
+    .photo-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-bottom: 2px;
+      min-height: 480px;
+    }
+
+    .photo-item-reverse {
+      direction: rtl;
+    }
+    .photo-item-reverse > * {
+      direction: ltr;
+    }
+
+    .photo-visual {
+      position: relative;
+      min-height: 480px;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    .pv-serrapelada {
+      background: linear-gradient(160deg, #1a1008 0%, #2d1f0a 40%, #0a0800 100%);
+    }
+    .pv-serrapelada::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 70%, rgba(120,90,30,0.3) 0%, transparent 70%),
+        repeating-linear-gradient(
+          170deg,
+          transparent 0px, transparent 3px,
+          rgba(100,70,20,0.06) 3px, rgba(100,70,20,0.06) 4px
+        );
+    }
+    .pv-serrapelada::after {
+      content: '⛏';
+      position: absolute;
+      font-size: 5rem;
+      opacity: 0.04;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .pv-kuwait {
+      background: linear-gradient(160deg, #0a0500 0%, #1a0800 50%, #2a0d00 100%);
+    }
+    .pv-kuwait::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 30% 50%, rgba(180,60,0,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 70% 30%, rgba(80,40,0,0.3) 0%, transparent 50%);
+    }
+    .pv-kuwait::after {
+      content: '🔥';
+      position: absolute;
+      font-size: 4rem;
+      opacity: 0.05;
+      top: 40%; left: 45%;
+      transform: translate(-50%, -50%);
+    }
+
+    .pv-rwanda {
+      background: linear-gradient(160deg, #080808 0%, #141414 60%, #0a0a0a 100%);
+    }
+    .pv-rwanda::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 100% 40% at 50% 100%, rgba(40,30,20,0.5) 0%, transparent 60%);
+    }
+
+    .pv-genesis {
+      background: linear-gradient(160deg, #050d10 0%, #0a1a20 50%, #040a0d 100%);
+    }
+    .pv-genesis::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 40%, rgba(30,80,100,0.2) 0%, transparent 60%),
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px, transparent 8px,
+          rgba(20,60,80,0.04) 8px, rgba(20,60,80,0.04) 9px
+        );
+    }
+
+    .pv-amazonia {
+      background: linear-gradient(160deg, #050a05 0%, #0a1a08 50%, #040d04 100%);
+    }
+    .pv-amazonia::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 40% 50%, rgba(20,60,20,0.25) 0%, transparent 60%),
+        repeating-linear-gradient(
+          80deg,
+          transparent 0px, transparent 5px,
+          rgba(10,40,10,0.05) 5px, rgba(10,40,10,0.05) 6px
+        );
+    }
+
+    .pv-label {
+      position: relative;
+      z-index: 1;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #4a3a2a;
+    }
+
+    .photo-content {
+      background: #0d0d0d;
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .photo-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #b48c50;
+      margin-bottom: 16px;
+    }
+
+    h3.photo-title {
+      font-size: 1.7rem;
+      font-weight: 300;
+      color: #f0e8d8;
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .photo-body {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: #7a6a58;
+      margin-bottom: 14px;
+    }
+
+    .photo-quote {
+      margin-top: 24px;
+      padding: 16px 20px;
+      border-left: 2px solid #2a1f0f;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: #5a4a38;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .photo-item, .photo-item-reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+      .photo-visual { min-height: 200px; }
+      .photo-content { padding: 36px 24px; }
+    }
+
     /* Footer */
     footer {
       text-align: center;
@@ -300,6 +472,119 @@
       <div class="work-title">Africa（非洲）</div>
       <div class="work-desc">横跨非洲大陆，记录苏丹、卢旺达、安哥拉等地的战争、难民与人道危机，见证人类在苦难中的韧性。</div>
     </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Famous Photographs -->
+  <div style="text-align:center; padding: 0 32px 20px;">
+    <div class="section-label">标志性影像</div>
+    <h2 style="color:#f0e8d8; font-weight:300;">那些永远改变了我们观看世界方式的照片</h2>
+    <p style="max-width:600px; margin: 0 auto; color:#6a5a4a;">由于版权保护，以下以文字重现这些影像的震撼瞬间。每一段描述，都是一次重新"看见"的邀请。</p>
+  </div>
+
+  <div class="photo-list">
+
+    <div class="photo-item">
+      <div class="photo-visual pv-serrapelada">
+        <div class="pv-label">Serra Pelada, Brazil · 1986</div>
+      </div>
+      <div class="photo-content">
+        <div class="photo-tag">最具震撼力的单幅作品</div>
+        <h3 class="photo-title">黄金山·地狱景象</h3>
+        <p class="photo-body">
+          1986年，巴西帕拉州，Serra Pelada 露天金矿。萨尔加多站在矿坑边缘俯瞰——那不是一座矿山，那是但丁笔下的地狱被搬到了现实。
+        </p>
+        <p class="photo-body">
+          五万名赤身男子覆盖着金色泥浆，密密匝匝地爬满了一座深达数百米的巨型坑壁。他们每人背负30至60公斤的泥土袋，每天来回攀爬60次以上，只为换取微薄的报酬或一丝发财的幻想。没有机械，没有安全绳，只有人类最原始的体力。
+        </p>
+        <p class="photo-body">
+          这张照片常被与米开朗基罗的《最后的审判》相提并论。黑白影调抹去了时代标记，让人分不清这是20世纪还是中世纪——也许，贪婪与苦难从未有过时代之别。
+        </p>
+        <div class="photo-quote">"我在那里待了四周。每一天，我都不确定自己是在拍摄人类，还是在目睹人类的某种本质。"</div>
+      </div>
+    </div>
+
+    <div class="photo-item photo-item-reverse">
+      <div class="photo-visual pv-kuwait">
+        <div class="pv-label">Kuwait · 1991</div>
+      </div>
+      <div class="photo-content">
+        <div class="photo-tag">Workers 系列 · 最具末日感的影像</div>
+        <h3 class="photo-title">科威特油井大火中的骑手</h3>
+        <p class="photo-body">
+          海湾战争结束后，伊拉克军队撤退时点燃了科威特700余口油井。萨尔加多赶赴现场时，看到的是一幅超现实的末日景象：遮天蔽日的黑烟将白昼变成永夜，熊熊火柱在沙漠中燃烧，空气中弥漫着窒息的焦油气味。
+        </p>
+        <p class="photo-body">
+          画面中心，一名骑手驱马穿越火场，马蹄扬起的尘土与背后的烈焰融为一体。黑与橙的对比，生命的脆弱与自然力量的暴烈，在快门的1/500秒里被永远定格。
+        </p>
+        <p class="photo-body">
+          这张照片成为《Workers》系列的封面图像，也成为20世纪人类对地球犯下的罪行的象征之一。
+        </p>
+        <div class="photo-quote">"那不是摄影，那是见证。我只是恰好手里有相机。"</div>
+      </div>
+    </div>
+
+    <div class="photo-item">
+      <div class="photo-visual pv-rwanda">
+        <div class="pv-label">Goma, Congo · 1994</div>
+      </div>
+      <div class="photo-content">
+        <div class="photo-tag">Migrations 系列 · 最令人心碎的影像</div>
+        <h3 class="photo-title">刚果戈马难民营</h3>
+        <p class="photo-body">
+          1994年卢旺达种族灭绝后，超过百万难民涌入刚果（时称扎伊尔）边境的戈马地区。萨尔加多在那里度过了数周，拍摄了他职业生涯中最沉重的一批影像。
+        </p>
+        <p class="photo-body">
+          其中一张，是一名母亲抱着已经死去的孩子坐在路边。她的眼神空洞，望向镜头之外某个无法言说的地方。周围，是绵延数公里、一望无际的人群，每个人都带着同样茫然的表情向前走。
+        </p>
+        <p class="photo-body">
+          这批照片在全球引发轩然大波，也让萨尔加多陷入了深刻的精神危机。他后来坦言："我在卢旺达之后，失去了对人类的信心。"正是这次危机，促使他开始了《Genesis》——一次寻找人类与自然之美的精神自救之旅。
+        </p>
+        <div class="photo-quote">"摄影师也是人，我们不是机器。那些影像，会永远跟着你。"</div>
+      </div>
+    </div>
+
+    <div class="photo-item photo-item-reverse">
+      <div class="photo-visual pv-genesis">
+        <div class="pv-label">South Georgia Island · 2009</div>
+      </div>
+      <div class="photo-content">
+        <div class="photo-tag">Genesis 系列 · 最具治愈力的影像</div>
+        <h3 class="photo-title">南乔治亚岛的王企鹅群</h3>
+        <p class="photo-body">
+          在卢旺达的创伤之后，萨尔加多花了八年时间寻找地球上"尚未被破坏的角落"。南大西洋的南乔治亚岛，是他找到的答案之一。
+        </p>
+        <p class="photo-body">
+          画面中，逾百万只王企鹅密密麻麻地覆盖着整片海岸，延伸至远处的雪山脚下。黑白影调将这幅景象处理成一首交响乐的乐谱——每一只企鹅是一个音符，整体构成了一首关于生命繁盛的壮丽乐章。
+        </p>
+        <p class="photo-body">
+          与他早年记录人类苦难的影像不同，这张照片里没有痛苦，只有一种令人屏息的、近乎神圣的宁静。它告诉我们：世界曾经如此，也仍然如此。
+        </p>
+        <div class="photo-quote">"Genesis 是我写给地球的情书，也是我给自己的处方。"</div>
+      </div>
+    </div>
+
+    <div class="photo-item">
+      <div class="photo-visual pv-amazonia">
+        <div class="pv-label">Amazon Rainforest · 2019</div>
+      </div>
+      <div class="photo-content">
+        <div class="photo-tag">Amazonia 系列 · 最后的遗嘱</div>
+        <h3 class="photo-title">Zo'é 部落的孩子</h3>
+        <p class="photo-body">
+          亚马逊深处，Zo'é 是至今仍与外界几乎隔绝的原住民族群。萨尔加多获准进入他们的领地，拍摄了他最后一部重要系列作品。
+        </p>
+        <p class="photo-body">
+          其中一张，是一名Zo'é 男孩站在晨雾笼罩的雨林边缘，手持弓箭，眼神直视镜头。他的脸上没有恐惧，也没有好奇——只有一种古老的、与这片土地融为一体的从容。背后，是人类已知的最复杂的生态系统。
+        </p>
+        <p class="photo-body">
+          这张照片在萨尔加多去世后被反复引用，因为它同时包含着两种紧迫感：雨林正在消失，而这些与它共生的人们，也将随之消失。
+        </p>
+        <div class="photo-quote">"如果亚马逊死去，地球也将死去。这不是比喻，这是科学。"</div>
+      </div>
+    </div>
+
   </div>
 
   <div class="divider"></div>
