@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>萨尔加多 — 用镜头改变世界</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #0a0a0a;
+      color: #e8e0d5;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(160deg, #0a0a0a 0%, #1a1208 50%, #0a0a0a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(180,140,80,0.08) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: #b48c50;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 10vw, 8rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: #f0e8d8;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: #b48c50;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: #8a7a6a;
+      letter-spacing: 0.1em;
+      margin-bottom: 48px;
+    }
+
+    .hero-quote {
+      max-width: 600px;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #9a8a78;
+      line-height: 1.8;
+      border-left: 2px solid #b48c50;
+      padding-left: 24px;
+      text-align: left;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #5a5040;
+      text-transform: uppercase;
+    }
+
+    /* Sections */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 100px 32px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: #b48c50;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 300;
+      color: #f0e8d8;
+      margin-bottom: 32px;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: #9a8a78;
+      margin-bottom: 20px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: #b48c50;
+      margin: 60px auto;
+      opacity: 0.4;
+    }
+
+    /* Works Grid */
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2px;
+      margin-top: 48px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 32px;
+    }
+
+    .work-card {
+      background: #111;
+      padding: 40px 32px;
+      border-top: 1px solid #2a2015;
+      transition: background 0.3s;
+    }
+
+    .work-card:hover { background: #181208; }
+
+    .work-year {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #b48c50;
+      margin-bottom: 12px;
+    }
+
+    .work-title {
+      font-size: 1.3rem;
+      color: #f0e8d8;
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+
+    .work-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #6a5a4a;
+    }
+
+    /* Exhibitions */
+    .exhibitions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .exhibit-card {
+      border: 1px solid #2a2015;
+      padding: 32px;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+
+    .exhibit-card:hover { border-color: #b48c50; }
+
+    .exhibit-status {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      background: rgba(180,140,80,0.15);
+      color: #b48c50;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    .exhibit-city {
+      font-size: 1.4rem;
+      color: #f0e8d8;
+      margin-bottom: 8px;
+      font-weight: 300;
+    }
+
+    .exhibit-venue {
+      font-size: 0.9rem;
+      color: #9a8a78;
+      margin-bottom: 16px;
+    }
+
+    .exhibit-date {
+      font-size: 0.85rem;
+      color: #6a5a4a;
+      letter-spacing: 0.05em;
+    }
+
+    .exhibit-show {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #b48c50;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 60px 32px;
+      border-top: 1px solid #1a1208;
+      font-size: 0.8rem;
+      color: #3a3028;
+      letter-spacing: 0.15em;
+    }
+
+    /* Highlight */
+    .highlight { color: #b48c50; font-style: italic; }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-eyebrow">1944 — 2025</div>
+    <h1>Sebastião<br/><em>Salgado</em></h1>
+    <div class="hero-sub">用黑白影像，记录人类的苦难与尊严</div>
+    <blockquote class="hero-quote">
+      "我拍摄的不是贫穷，而是人们在极端困境中所展现出的尊严与力量。"
+      <br/><br/>— Sebastião Salgado
+    </blockquote>
+    <div class="scroll-hint">向下滚动探索</div>
+  </div>
+
+  <!-- Biography -->
+  <section id="about">
+    <div class="section-label">摄影师简介</div>
+    <h2>从经济学家到<br/>世界良知的镜头</h2>
+    <p>
+      塞巴斯蒂昂·萨尔加多（Sebastião Salgado）1944年2月8日生于巴西米纳斯吉拉斯州的艾莫雷斯，2025年5月23日在巴黎辞世，享年81岁。他原是一名经济学家，拥有圣保罗大学经济学硕士学位及巴黎大学经济学博士学位。
+    </p>
+    <p>
+      1970年代初，他因工作频繁前往非洲，萌生了以摄影记录人类处境的使命感。1974年起，他以自由摄影师身份为 Sygma 通讯社工作，此后加入 Gamma，直至1979年成为 <span class="highlight">马格南图片社</span>（Magnum Photos）成员——这是世界上最具声望的摄影记者组织，由亨利·卡蒂埃-布列松等传奇人物创立。
+    </p>
+    <p>
+      萨尔加多以标志性的黑白影像著称，数十年间深入矿山、难民营、亚马逊雨林、北极冻土，用镜头揭示工业化对人与自然的冲击。他同时是积极的环保行动者，与妻子蕾莉亚共同创立 <span class="highlight">Instituto Terra</span>，在巴西种植逾百万棵树，修复家乡退化的森林。他曾荣获尤金·史密斯人道主义摄影奖、哈苏奖，并担任联合国儿童基金会（UNICEF）亲善大使。
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Works -->
+  <div style="text-align:center; padding: 0 32px 20px;">
+    <div class="section-label">代表作品系列</div>
+    <h2 style="color:#f0e8d8; font-weight:300;">六个改变视角的项目</h2>
+  </div>
+  <div class="works-grid">
+    <div class="work-card">
+      <div class="work-year">1986 — 1989</div>
+      <div class="work-title">Serra Pelada</div>
+      <div class="work-desc">巴西黄金矿的史诗影像。数万名矿工如蚂蚁般攀爬泥泞矿坑，被誉为20世纪最震撼的摄影作品之一。</div>
+    </div>
+    <div class="work-card">
+      <div class="work-year">1993</div>
+      <div class="work-title">Workers（工人）</div>
+      <div class="work-desc">历时六年拍摄全球26国工业劳动者，记录工业时代即将消逝前，人类体力劳动的壮美与沉重。</div>
+    </div>
+    <div class="work-card">
+      <div class="work-year">2000</div>
+      <div class="work-title">Migrations（迁徙）</div>
+      <div class="work-desc">跨越40个国家，追踪战争、饥荒、气候变化驱使下的人口流离，被称为"20世纪末人类大迁徙的视觉档案"。</div>
+    </div>
+    <div class="work-card">
+      <div class="work-year">2013</div>
+      <div class="work-title">Genesis（创世纪）</div>
+      <div class="work-desc">历时八年，深入地球最后的原始之地，记录未被现代文明触及的自然与人类族群。共展出245张照片。</div>
+    </div>
+    <div class="work-card">
+      <div class="work-year">2021</div>
+      <div class="work-title">Amazonia（亚马逊）</div>
+      <div class="work-desc">深入亚马逊雨林六年，以震撼视角呈现这片地球之肺的壮美与脆弱，呼吁全球关注雨林保护。</div>
+    </div>
+    <div class="work-card">
+      <div class="work-year">1986 — 2007</div>
+      <div class="work-title">Africa（非洲）</div>
+      <div class="work-desc">横跨非洲大陆，记录苏丹、卢旺达、安哥拉等地的战争、难民与人道危机，见证人类在苦难中的韧性。</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Exhibitions 2026 -->
+  <section id="exhibitions">
+    <div class="section-label">2026年在展展览</div>
+    <h2>世界各地，向大师致敬</h2>
+    <p>萨尔加多于2025年5月辞世后，全球多家顶级文化机构相继举办回顾展，以纪念这位用镜头记录人类历史的伟大艺术家。</p>
+
+    <div class="exhibitions-grid">
+      <div class="exhibit-card">
+        <span class="exhibit-status">进行中</span>
+        <div class="exhibit-city">巴黎</div>
+        <div class="exhibit-venue">巴黎市政厅 · Salle Saint-Jean</div>
+        <div class="exhibit-date">2026年2月21日 — 5月30日</div>
+        <div class="exhibit-show">近200张跨越半世纪的经典影像，由其妻蕾莉亚策展，免费向公众开放</div>
+      </div>
+      <div class="exhibit-card">
+        <span class="exhibit-status">进行中</span>
+        <div class="exhibit-city">巴黎</div>
+        <div class="exhibit-venue">Lodo Gallery</div>
+        <div class="exhibit-date">2026年2月19日 — 4月4日</div>
+        <div class="exhibit-show">Genesis Platinum 系列精选展</div>
+      </div>
+      <div class="exhibit-card">
+        <span class="exhibit-status">已结束</span>
+        <div class="exhibit-city">科隆</div>
+        <div class="exhibit-venue">Rautenstrauch-Joest-Museum</div>
+        <div class="exhibit-date">至2026年3月中旬</div>
+        <div class="exhibit-show">AMAZONIA — 德国首次展出的亚马逊系列</div>
+      </div>
+      <div class="exhibit-card">
+        <span class="exhibit-status">已结束</span>
+        <div class="exhibit-city">纽约</div>
+        <div class="exhibit-venue">BMCC Tribeca Performing Arts Center</div>
+        <div class="exhibit-date">2026年3月8日 — 3月21日</div>
+        <div class="exhibit-show">萨尔加多经典作品回顾</div>
+      </div>
+      <div class="exhibit-card">
+        <span class="exhibit-status">即将开幕</span>
+        <div class="exhibit-city">汉堡</div>
+        <div class="exhibit-venue">摄影三年展 · Hamburg</div>
+        <div class="exhibit-date">2026年6月5日 — 9月22日</div>
+        <div class="exhibit-show">Triennial of Photography Hamburg 重点展览</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>本页面内容基于公开资料整理，仅作展示用途</p>
+    <p style="margin-top:12px;">Sebastião Salgado · 1944 — 2025</p>
+  </footer>
+
+</body>
+</html>
